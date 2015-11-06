@@ -105,7 +105,7 @@
                             <input type="email" name='email' id='email' class="form-control transparent" placeholder="Your email here...">
                           </div>
                           <button id="submit" name="submit" type="submit" class="btn btn-danger btn-fill">Notify Me</button>
-						  <p class="success-msg" id="success-message" style="display:none;">You have been successfully subscribed!</p>
+						  <p class="success-msg hidden" id="success-message" >You have been successfully subscribed!</p>
                         </form>
 
                     </div>
@@ -115,7 +115,7 @@
     </div>
     <div class="footer">
       <div class="container">
-             Made with <i class="fa fa-heart heart"></i> by <a href="https://ro.linkedin.com/in/mariusmitrofan">Marius Mitrofan</a>. 
+             Made with <i class="fa fa-heart heart"></i> by <a href="https://ro.linkedin.com/in/mariusmitrofan" target="_blank">Marius Mitrofan</a>. 
       </div>
     </div>
  </div>
@@ -166,7 +166,7 @@ $(document).ready(function(){
 		xmlhttp.open("GET", scriptURL+name,true);
 		xmlhttp.onreadystatechange=function() {
 		if (xmlhttp.readyState==4) {
-			$('#success-message').show();
+			$('#success-message').removeClass( "hidden", 10000);
 			}
 		}
 
