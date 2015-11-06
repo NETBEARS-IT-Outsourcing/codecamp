@@ -125,26 +125,45 @@
 <script type='text/javascript'>
 $(document).ready(function(){
 	$("#submit").click(function(){
-		var scriptURL = 'https://script.google.com/macros/s/AKfycbz7qXrDoNf86XU4uk1WGpcguydF2_ryuWO1Qrn58cCmDSC9T9af/exec';
+		var scriptURL = 'https://script.google.com/macros/s/AKfycbz7qXrDoNf86XU4uk1WGpcguydF2_ryuWO1Qrn58cCmDSC9T9af/exec?email=';
 		var name = $('#email').val();
-		var http = require('https');
-		var options = {
-			host: 'script.google.com',
-			path: '/macros/s/AKfycbz7qXrDoNf86XU4uk1WGpcguydF2_ryuWO1Qrn58cCmDSC9T9af/exec?email='+name
-			};
-		callback = function(response) {
-			var str = '';
-			response.on('data', function (chunk) {
-				str += chunk;
-			});
-		
-		//the whole response has been recieved, so we just print it out here
-		response.on('end', function () {
-			console.log(str);
-			});
-		}
-		
-		http.request(options, callback).end();
+		var xmlhttp=false;
+/*@cc_on @*/
+/*@if (@_jscript_version >= 5)
+// JScript gives us Conditional compilation, we can cope with old IE versions.
+// and security blocked creation of the objects.
+ try {
+  xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+ } catch (e) {
+  try {
+   xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  } catch (E) {
+   xmlhttp = false;
+  }
+ }
+@end @*/
+if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
+	try {
+		xmlhttp = new XMLHttpRequest();
+	} catch (e) {
+		xmlhttp=false;
+	}
+}
+if (!xmlhttp && window.createRequest) {
+	try {
+		xmlhttp = window.createRequest();
+	} catch (e) {
+		xmlhttp=false;
+	}
+}
+
+xmlhttp.open("GET", scriptURL+name,true);
+ xmlhttp.onreadystatechange=function() {
+  if (xmlhttp.readyState==4) {
+   alert(xmlhttp.responseText)
+  }
+ }
+ xmlhttp.send(null);
 	});
 });
 
