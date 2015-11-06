@@ -105,7 +105,7 @@
                             <input type="email" name='email' id='email' class="form-control transparent" placeholder="Your email here...">
                           </div>
                           <button id="submit" name="submit" type="submit" class="btn btn-danger btn-fill">Notify Me</button>
-						  <p class="hidden success-msg" id="success-message">You have been successfully subscribed!</p>
+						  <p class="success-msg" id="success-message">You have been successfully subscribed!</p>
                         </form>
 
                     </div>
@@ -126,6 +126,7 @@
 <script type='text/javascript'>
 $(document).ready(function(){
 	$("#submit").click(function(){
+		$('#success-message').hide();
 		var scriptURL = 'https://script.google.com/macros/s/AKfycbz7qXrDoNf86XU4uk1WGpcguydF2_ryuWO1Qrn58cCmDSC9T9af/exec?email=';
 		var name = $('#email').val();
 		var xmlhttp=false;
