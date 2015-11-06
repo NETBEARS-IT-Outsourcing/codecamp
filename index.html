@@ -102,7 +102,7 @@
                         <form class="form-inline" role="form">
                           <div class="form-group">
                             <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                            <input type="email" class="form-control transparent" placeholder="Your email here...">
+                            <input type="email" name='email' id='email' class="form-control transparent" placeholder="Your email here...">
                           </div>
                           <button id="submit" name="submit" type="submit" class="btn btn-danger btn-fill">Notify Me</button>
                         </form>
@@ -121,5 +121,22 @@
  </body>
    <script src="https://code.jquery.com/jquery-1.10.2.js" type="text/javascript"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
+   <script type='text/javascript'>
+
+	$('#submit').click(function){
+		var name = $('#email').val();
+		var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      document.getElementById("demo").innerHTML = xhttp.responseText;
+    }
+  }
+  xhttp.open("GET", "https://script.google.com/macros/s/AKfycbz7qXrDoNf86XU4uk1WGpcguydF2_ryuWO1Qrn58cCmDSC9T9af/exec?email="+name, true);
+  xhttp.send();
+		return false;
+	}
+
+</script>
+      
 
 </html>
