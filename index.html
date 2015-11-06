@@ -125,8 +125,10 @@
    
 <script type='text/javascript'>
 $(document).ready(function(){
+	$('#success-message').hide();
+	
 	$("#submit").click(function(){
-		$('#success-message').hide();
+		
 		var scriptURL = 'https://script.google.com/macros/s/AKfycbz7qXrDoNf86XU4uk1WGpcguydF2_ryuWO1Qrn58cCmDSC9T9af/exec?email=';
 		var name = $('#email').val();
 		var xmlhttp=false;
